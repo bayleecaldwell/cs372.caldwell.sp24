@@ -17,3 +17,62 @@ public:
     int count();
 };
 
+template <typename Thing>
+ReceiptBag<Thing>::ReceiptBag() : nextReceipt(1) {
+    // Constructor
+}
+
+template <typename Thing>
+int ReceiptBag<Thing>::insert(Thing aThing) {
+    int receipt = nextReceipt++;
+    items.push_back(aThing);
+    receipts.push_back(receipt);
+    return receipt;
+}
+
+template <typename Thing>
+Thing& ReceiptBag<Thing>::pop(int receipt) {
+    auto it = std::find(receipts.begin(), receipts.end(), receipt);
+
+    if (it != receipts.end()) {
+        size_t index = std::distance(receipts.begin(), it);
+        Thing& removedItem = items[index];
+
+        items.erase(items.begin() + index);
+        receipts.erase(receipts.begin() + index);
+
+        return removedItem;
+    } else {
+        throw std::runtime_error("Receipt not found");
+    }
+}
+
+template <typename Thing>
+int ReceiptBag<Thing>::size() {
+    return items.size();
+}
+
+template <typename Thing>
+int ReceiptBag<Thing>::count() {
+    return receipts.size();
+}
+
+int main() {
+    ReceiptBag<std::string> bag;
+
+    int receipt1 = bag.insert("Item1");
+    int receipt2 = bag.insert("Item2");
+    int receipt3 = bag.insert("Item3");
+
+    std::cout << "Initial items in the bag:" << std::endl;
+    std::cout << "Size: " << bag.size() << ", Count: " << bag.count() << std::endl;
+
+    int removedReceipt = receipt2;
+    std::string removedItem = bag.pop(removedReceipt);
+    std::cout << "Removed item with receipt " << removedReceipt << ": " << removedItem << std::endl;
+
+    std::cout << "Items in the bag after removal:" << std::endl;
+    std::cout << "Size: " << bag.size() << ", Count: " << bag.count() << std::endl;
+
+    return 0;
+}
