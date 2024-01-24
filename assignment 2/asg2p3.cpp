@@ -32,19 +32,24 @@ int ReceiptBag<Thing>::insert(Thing aThing) {
 
 template <typename Thing>
 Thing& ReceiptBag<Thing>::pop(int receipt) {
-    auto it = std::find(receipts.begin(), receipts.end(), receipt);
+    auto it = receipts.begin();
+    while (it != receipts.end() && *it != receipt) {
+        ++it;
+    }
 
     if (it != receipts.end()) {
         size_t index = std::distance(receipts.begin(), it);
         Thing& removedItem = items[index];
 
         items.erase(items.begin() + index);
-        receipts.erase(receipts.begin() + index);
+        receipts.erase(it);
 
         return removedItem;
     } else {
         throw std::runtime_error("Receipt not found");
     }
+
+    return items[0];
 }
 
 template <typename Thing>
