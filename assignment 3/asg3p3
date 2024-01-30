@@ -1,0 +1,30 @@
+#include <iostream>
+
+template <typename T>
+class CircularList : public List<T> {
+private:
+    using Node = typename List<T>::Node;
+
+public:
+    CircularList();
+    CircularList(T newData);
+    CircularList(const CircularList& rhs);
+    ~CircularList() override;
+    void push_front(T data) override;
+    void push_back(T data) override;
+    void pop_back() override;
+    void pop_front() override;
+    void circle(void (*doIt)(T data), int startPos);
+};
+
+template <typename T>
+CircularList<T>::CircularList() : List<T>() {}
+
+template <typename T>
+CircularList<T>::CircularList(T newData) : List<T>(newData) {}
+
+template <typename T>
+CircularList<T>::CircularList(const CircularList& rhs) : List<T>(rhs) {}
+
+template <typename T>
+CircularList<T>::~CircularList() {}
