@@ -28,3 +28,15 @@ CircularList<T>::CircularList(const CircularList& rhs) : List<T>(rhs) {}
 
 template <typename T>
 CircularList<T>::~CircularList() {}
+
+template <typename T>
+void CircularList<T>::push_front(T data) {
+    List<T>::push_front(data);
+    List<T>::tail->next = List<T>::head;
+}
+
+template <typename T>
+void CircularList<T>::push_back(T data) {
+    List<T>::push_back(data);
+    List<T>::tail->next = List<T>::head;
+}
