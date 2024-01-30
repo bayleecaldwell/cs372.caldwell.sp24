@@ -40,3 +40,34 @@ void CircularList<T>::push_back(T data) {
     List<T>::push_back(data);
     List<T>::tail->next = List<T>::head;
 }
+
+template <typename T>
+void CircularList<T>::pop_back() {
+    List<T>::pop_back();
+    List<T>::tail->next = List<T>::head;
+}
+
+template <typename T>
+void CircularList<T>::pop_front() {
+    List<T>::pop_front();
+    List<T>::tail->next = List<T>::head;
+}
+
+template <typename T>
+void CircularList<T>::circle(void (*doIt)(T data), int startPos) {
+    Node* current = List<T>::head;
+    for (int i = 0; i < startPos; ++i) {
+        if (current != nullptr) {
+            current = current->next;
+        } else {
+            throw std::out_of_range("Invalid starting position");
+        }
+    }
+
+    Node* startNode = current;
+
+    do {
+        doIt(current->data);
+        current = current->next;
+    } while (current != startNode);
+}
