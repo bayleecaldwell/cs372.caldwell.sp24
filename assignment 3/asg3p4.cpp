@@ -31,3 +31,20 @@ public:
     void pop_front();
     void traverse(void (*doIt)(T data));
 };
+
+template <typename T>
+List<T>::List() : head(nullptr), tail(nullptr) {}
+
+template <typename T>
+List<T>::List(T newData) : head(new Node{newData, nullptr, nullptr}), tail(head) {}
+
+template <typename T>
+List<T>::List(const List& rhs) {
+    head = nullptr;
+    tail = nullptr;
+    Node* current = rhs.head;
+    while (current != nullptr) {
+        push_back(current->data);
+        current = current->next;
+    }
+}
