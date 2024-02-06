@@ -34,3 +34,15 @@ public:
         delete[] this->data;
         this->data = newData;
     }
+    T pop() override {
+        if (this->size == 0)
+            throw std::out_of_range("Vector is empty");
+        return this->data[--this->size];
+    }
+
+    T& operator[](int index) override {
+        if (index < 0 || index >= this->size)
+            throw std::out_of_range("Index out of bounds");
+        return this->data[index];
+    }
+};
