@@ -70,3 +70,33 @@ public:
         return this->data[index];
     }
 };
+
+int main() {
+
+    Vector<int> vec;
+    vec.push(10);
+    vec.push(20);
+    vec.push(30);
+
+    std::cout << "Vector elements: ";
+    for (int i = 0; i < vec.getSize(); ++i)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
+
+    std::cout << "Popped element: " << vec.pop() << std::endl;
+
+
+    Array<int, 5> arr;
+    arr[0] = 1;
+    arr[1] = 2;
+    arr[2] = 3;
+    arr[3] = 4;
+    arr[4] = 5;
+
+    std::cout << "Array elements: ";
+    for (int i = 0; i < arr.getSize(); ++i)
+        std::cout << arr[i] << " ";
+    std::cout << std::endl;
+
+    return 0;
+}
