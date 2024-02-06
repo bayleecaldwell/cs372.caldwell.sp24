@@ -46,3 +46,27 @@ public:
         return this->data[index];
     }
 };
+
+template<typename T, int N>
+class Array : public SequentialContainer<T> {
+public:
+    Array() : SequentialContainer<T>() {
+        this->data = new T[N];
+        this->size = N;
+    }
+    ~Array() {}
+
+    void push(const T& value) override {
+        throw std::runtime_error("Cannot push to a fixed-size array");
+    }
+
+    T pop() override {
+        throw std::runtime_error("Cannot pop from a fixed-size array");
+    }
+
+    T& operator[](int index) override {
+        if (index < 0 || index >= this->size)
+            throw std::out_of_range("Index out of bounds");
+        return this->data[index];
+    }
+};
