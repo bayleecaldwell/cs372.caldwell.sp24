@@ -41,3 +41,17 @@ string infixToPostfix(string expression) {
 
     return postfix;
 }
+
+string infixToPrefix(string expression) {
+    string reversedExpression = string(expression.rbegin(), expression.rend());
+    for (char &c : reversedExpression) {
+        if (c == '(') {
+            c = ')';
+        } else if (c == ')') {
+            c = '(';
+        }
+    }
+    string postfix = infixToPostfix(reversedExpression);
+    return string(postfix.rbegin(), postfix.rend());
+}
+
