@@ -55,3 +55,8 @@ string infixToPrefix(string expression) {
     return string(postfix.rbegin(), postfix.rend());
 }
 
+int main() {
+    string expression;
+    
+    cout << "Enter a fully parenthesized expression: ";
+    getline(cin, expression);
