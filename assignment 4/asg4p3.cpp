@@ -57,6 +57,15 @@ string infixToPrefix(string expression) {
 
 int main() {
     string expression;
-    
-    cout << "Enter a fully parenthesized expression: ";
+
+     cout << "Enter a fully parenthesized expression: ";
     getline(cin, expression);
+
+    string prefix = infixToPrefix(expression);
+    string postfix = infixToPostfix(expression);
+
+    cout << "Prefix notation: " << prefix << endl;
+    cout << "Postfix notation: " << postfix << endl;
+
+    return 0;
+}
