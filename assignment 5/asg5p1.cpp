@@ -36,6 +36,16 @@ int main(){
     mt19937 gen(rd());
 
     for(int size : sizes) {
-        
+        vector<int> data(size);
+        uniform_int_distribution<> dis(1, 1000);
+        for (int i = 0; i < size; i++){
+            data[i] = dis(gen);
+        }
+
+        auto start = chrono::high_resolution_clock::now();
+        quickSort(data, 0, size - 1);
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> timeTaken = end - start;
+        cout << "Quicksort time for " << size << "elements: " << 
     }
 }
