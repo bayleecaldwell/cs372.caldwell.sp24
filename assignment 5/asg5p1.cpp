@@ -1,3 +1,28 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <random>
+#include <chrono>
+
+using namespace std;
+
+template<typename T>
+void quickSort(vector<T>& arr, int low, int high) {
+    if (low < high) {
+        int pivot = partition(arr, low, high);
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
+    }
+}
+
+template<typename T>
+int partition(vector<T>& arr, int low, int high) {
+    T pivot = arr[high];
+    int i = low -1;
+    for (int j = low; j <= high -1; j++){
+        if (arr[j] < pivot) {
+            i++;
+            swap()
+        }
+    }
+}
