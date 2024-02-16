@@ -46,6 +46,14 @@ int main(){
         quickSort(data, 0, size - 1);
         auto end = chrono::high_resolution_clock::now();
         chrono::duration<double> timeTaken = end - start;
-        cout << "Quicksort time for " << size << "elements: " << 
+        cout << "Quicksort time for " << size << "elements: " << timeTaken.count() << " seconds" << endl;
+
+        start = chrono::high_resolution_clock::now();
+        sort(data.begin(), data.end());
+        end = chrono::high_resolution_clock::now();
+        timeTaken = end -start;
+        cout << "std::sort() time for " << size << " elements: " << timeTaken.count() << " seconds" 
     }
+
+    return 0;
 }
