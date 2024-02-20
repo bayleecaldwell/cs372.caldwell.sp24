@@ -7,6 +7,9 @@
 using namespace std;
 
 template<typename T>
+int partition(vector<T>& arr, int low, int high);
+
+template<typename T>
 void quickSort(vector<T>& arr, int low, int high) {
     if (low < high) {
         int pivot = partition(arr, low, high);
