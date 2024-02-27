@@ -10,14 +10,14 @@ bool checkParentheses(const std::string& str) {
             parenthesesStack.push(ch);
         } else if (ch == ')') {
             if (parenthesesStack.empty()) {
-                return false; // More closing parentheses than opening ones
+                return false;
             } else {
                 parenthesesStack.pop();
             }
         }
     }
 
-    return parenthesesStack.empty(); // Check if there are any unclosed opening parentheses
+    return parenthesesStack.empty();
 }
 
 int main() {
