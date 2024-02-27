@@ -41,7 +41,7 @@ template <typename T>
 class SelfAdjustingList : public List<T> {
 public:
     using List<T>::head;
-    using typename List<T>::Node; // Fix here
+    using typename List<T>::Node; 
     
     T* find(const T& itemToFind) {
         Node* prev = nullptr;
