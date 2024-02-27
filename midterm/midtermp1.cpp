@@ -76,7 +76,7 @@ int main() {
     
     int* found = list.find(3);
     if (found) {
-        std::cout << "Found item: " << *found << std::endl;
+        std::cout << "Found item: " << *found << std::endl; 
         std::cout << "Adjusted list: ";
         list.display();
     } else {
