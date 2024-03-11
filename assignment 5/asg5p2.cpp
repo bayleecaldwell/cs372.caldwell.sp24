@@ -10,3 +10,10 @@ public:
 
     TreeNode(T value) : data(value), left(nullptr), right(nullptr) {}
 };
+
+template<typename T>
+class BinaryTree {
+private:
+    std::shared_ptr<TreeNode<T>> root;
+
+    
