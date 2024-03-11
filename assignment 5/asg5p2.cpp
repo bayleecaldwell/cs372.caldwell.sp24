@@ -16,4 +16,14 @@ class BinaryTree {
 private:
     std::shared_ptr<TreeNode<T>> root;
 
-    
+    void insert(std::shared_ptr<TreeNode<T>>& node, T value) {
+        if (!node) {
+            node = std::make_shared<TreeNode<T>>(value);
+            return;
+        }
+        if (value < node->data) {
+            insert(node->left, value);
+        } else {
+            insert(node->right, value);
+        }
+    }
