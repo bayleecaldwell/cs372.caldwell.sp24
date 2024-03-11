@@ -1,4 +1,5 @@
 #include <memory>
+#include <iostream>
 
 template<typename T>
 class ListNode {
@@ -31,3 +32,15 @@ public:
         std::cout << std::endl;
     }
 };
+
+int main() {
+    List<int> myList;
+
+    myList.insert(1);
+    myList.insert(2);
+    myList.insert(3);
+
+    myList.display();
+
+    return 0;
+}
