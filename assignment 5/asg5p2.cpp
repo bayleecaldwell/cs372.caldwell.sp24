@@ -27,3 +27,22 @@ private:
             insert(node->right, value);
         }
     }
+    void display(std::shared_ptr<TreeNode<T>>& node) {
+            if (!node) return;
+            display(node->left);
+            std::cout << node->data << " ";
+            display(node->right);
+        }
+
+public:
+    BinaryTree() : root(nullptr) {}
+
+    void insert(T value) {
+        insert(root, value);
+    }
+
+    void display() {
+        display(root);
+        std::cout << std::endl;
+    }
+};
