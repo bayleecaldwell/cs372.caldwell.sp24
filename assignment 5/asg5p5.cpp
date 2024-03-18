@@ -92,3 +92,15 @@ void set(KeyType key, ValueType value) {
         getKeysHelper(root, keys);
         return keys;
     }
+
+     list<ValueType> getValues() const {
+        list<ValueType> values;
+        getValuesHelper(root, values);
+        return values;
+    }
+
+    ValueType& operator[](const KeyType& key) const {
+        return getNodeValue(root, key);
+    }
+};
+
