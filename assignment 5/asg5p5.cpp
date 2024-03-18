@@ -41,3 +41,38 @@ private:
             node->data.second = value;
         }
     }
+
+    ValueType& getNodeValue(TreeNode<KeyType, ValueType>* node, KeyType key) const {
+        if (node == nullptr) {
+            throw out_of_range("Key not found in dictionary.");
+        }
+
+        if (key < node->data.first) {
+            return getNodeValue(node->left, key);
+        } else if (key > node->data.first) {
+            return getNodeValue(node->right, key);
+        } else {
+            return node->data.second;
+        }
+    }
+
+    void getKeysHelper(TreeNode<KeyType, ValueType>* node, list<KeyType>& keys) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        getKeysHelper(node->left, keys);
+        keys.push_back(node->data.first);
+        getKeysHelper(node->right, keys);
+    }
+
+    void getValuesHelper(TreeNode<KeyType, ValueType>* node, list<ValueType>& values) const {
+        if (node == nullptr) {
+            return;
+        }
+
+        getValuesHelper(node->left, values);
+        values.push_back(node->data.second);
+        getValuesHelper(node->right, values);
+    }
+    
