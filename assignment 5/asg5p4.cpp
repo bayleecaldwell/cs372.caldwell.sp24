@@ -16,8 +16,17 @@ TreeNode<T>* cloneWithoutLeaves(TreeNode<T>* root) {
     if (root == nullptr) {
         return nullptr;
     }
-     if (root->left == nullptr && root->right == nullptr) {
+
+    if (root->left == nullptr && root->right == nullptr) {
         return nullptr;
     }
 
-    
+    TreeNode<T>* newLeft = cloneWithoutLeaves(root->left);
+    TreeNode<T>* newRight = cloneWithoutLeaves(root->right);
+
+    TreeNode<T>* newNode = new TreeNode<T>(root->data);
+    newNode->left = newLeft;
+    newNode->right = newRight;
+
+    return newNode;
+}
