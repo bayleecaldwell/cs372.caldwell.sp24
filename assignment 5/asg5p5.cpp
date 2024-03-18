@@ -76,4 +76,19 @@ private:
         getValuesHelper(node->right, values);
     }
 
-    
+    public:
+    Dictionary() : root(nullptr) {}
+
+    ValueType& get(KeyType key) const {
+        return getNodeValue(root, key);
+    }
+
+void set(KeyType key, ValueType value) {
+        insertNode(root, key, value);
+    }
+
+    list<KeyType> getKeys() const {
+        list<KeyType> keys;
+        getKeysHelper(root, keys);
+        return keys;
+    }
