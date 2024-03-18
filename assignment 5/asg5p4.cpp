@@ -30,3 +30,14 @@ TreeNode<T>* cloneWithoutLeaves(TreeNode<T>* root) {
 
     return newNode;
 }
+
+template <typename T>
+void inorderTraversal(TreeNode<T>* root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
