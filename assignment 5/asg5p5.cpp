@@ -104,3 +104,27 @@ void set(KeyType key, ValueType value) {
     }
 };
 
+int main() {
+    Dictionary<string, int> dict;
+    dict.set("grape", 5);
+    dict.set("banana", 10);
+    dict.set("orange", 15);
+
+    cout << "Value of grape: " << dict.get("grape") << endl;
+    cout << "Value of banana: " << dict.get("banana") << endl;
+    cout << "Value of orange: " << dict.get("orange") << endl;
+
+    cout << "Keys in the dictionary:" << endl;
+    for (const auto& key : dict.getKeys()) {
+        cout << key << endl;
+    }
+
+    cout << "Values in the dictionary:" << endl;
+    for (const auto& value : dict.getValues()) {
+        cout << value << endl;
+    }
+
+    cout << "Using operator[]: " << dict["banana"] << endl;
+
+    return 0;
+}
