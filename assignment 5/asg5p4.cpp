@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// TreeNode definition (assuming TreeNode is defined elsewhere)
 template <typename T>
 struct TreeNode {
     T data;
@@ -12,23 +11,19 @@ struct TreeNode {
     TreeNode(T value) : data(value), left(nullptr), right(nullptr) {}
 };
 
-// Function to clone a tree without its leaves
 template <typename T>
 TreeNode<T>* cloneWithoutLeaves(TreeNode<T>* root) {
     if (root == nullptr) {
         return nullptr;
     }
 
-    // If the node is a leaf, return nullptr (do not include it in the cloned tree)
     if (root->left == nullptr && root->right == nullptr) {
         return nullptr;
     }
 
-    // Recursively clone the left and right subtrees
     TreeNode<T>* newLeft = cloneWithoutLeaves(root->left);
     TreeNode<T>* newRight = cloneWithoutLeaves(root->right);
 
-    // Construct a new node for the cloned tree
     TreeNode<T>* newNode = new TreeNode<T>(root->data);
     newNode->left = newLeft;
     newNode->right = newRight;
@@ -36,7 +31,6 @@ TreeNode<T>* cloneWithoutLeaves(TreeNode<T>* root) {
     return newNode;
 }
 
-// Utility function to print the tree in inorder traversal
 template <typename T>
 void inorderTraversal(TreeNode<T>* root) {
     if (root == nullptr) {
