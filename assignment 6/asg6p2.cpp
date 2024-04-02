@@ -32,11 +32,13 @@ private:
     }
 };
 
+TreeNode* constructBSTFromSortedVector(const vector<int>& vec, int left, int right);
+
 DataStructure* createDataStructure(size_t itemCount) {
     DataStructure* data = new DataStructure(itemCount);
 
     for (size_t i = 0; i < itemCount; ++i) {
-        (*data->vec)[i] = rand() % 100; 
+        (*data->vec)[i] = rand() % 100;
     }
 
     sort(data->vec->begin(), data->vec->end());
