@@ -70,12 +70,13 @@ int main() {
     if (connected) {
         std::cout << "You are connected to Kevin Bacon!" << std::endl;
         std::cout << "Path: ";
-        for (const auto& person : path)
-            std::cout << person << " -> ";
-        std::cout << "Kevin Bacon" << std::endl;
+        for (size_t i = 0; i < path.size() - 1; ++i)
+            std::cout << path[i] << " -> ";
+        std::cout << path.back() << std::endl;
     } else {
         std::cout << "You are not connected to Kevin Bacon!" << std::endl;
     }
-
+    
+    
     return 0;
 }
