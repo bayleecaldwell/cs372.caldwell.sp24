@@ -4,6 +4,9 @@
 template<typename T>
 void partitionList(const T& splittingValue, const std::list<T>& originalList,
                    std::list<T>* lessThanList, std::list<T>* greaterThanList) {
+    if (lessThanList == nullptr || greaterThanList == nullptr)
+        return;
+
     typename std::list<T>::const_iterator it;
     for (it = originalList.begin(); it != originalList.end(); ++it) {
         if (*it < splittingValue)
@@ -49,13 +52,16 @@ int main() {
     std::list<int>* sortedList = quicksort(myList);
 
     std::cout << "Sorted List: ";
-    typename std::list<int>::iterator it;
-    for (it = sortedList->begin(); it != sortedList->end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    if (sortedList != nullptr) {
+        for (typename std::list<int>::iterator it = sortedList->begin(); it != sortedList->end(); ++it) {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
 
-    delete sortedList;
+        delete sortedList;
+    } else {
+        std::cout << "Sorting failed!" << std::endl;
+    }
 
     return 0;
 }
