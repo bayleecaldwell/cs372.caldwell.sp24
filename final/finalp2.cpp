@@ -49,7 +49,7 @@ int main() {
     std::list<int>* sortedList = quicksort(myList);
 
     std::cout << "Sorted List: ";
-    typename std::list<int>::const_iterator it;
+    typename std::list<int>::iterator it;
     for (it = sortedList->begin(); it != sortedList->end(); ++it) {
         std::cout << *it << " ";
     }
